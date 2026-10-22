@@ -583,9 +583,11 @@
         <button class="vcard" data-act="lb-coach" data-i="${i}"><div class="thumb"><video src="${esc(v.src)}#t=0.5" preload="metadata" muted playsinline></video></div>
         <div class="meta"><b>${esc(v.title)}</b><span>순코치</span></div></button>`).join('')}</div></div>` : '')
         + C.videoGroups.map((g, gi) => `<div class="vgroup"><h3>${esc(g.name)}</h3>
-          ${g.name === '동기부여' && (M.motivation || []).length ? `<div class="quote-list">${M.motivation.map((q, qi) => `
-            <button class="quote-card" data-act="lb-quote" data-i="${qi}"><img src="${esc(q.src)}" alt="${esc(q.title)}" loading="lazy"></button>`).join('')}</div>` : ''}
-          <div class="vgrid">${g.videos.map((v, vi) => `
+          <div class="vgrid">${g.name === '동기부여' ? (M.motivation || []).map((q, qi) => `
+            <button class="vcard" data-act="lb-quote" data-i="${qi}">
+              <div class="thumb quote-thumb"><span class="tag">글귀</span><img src="${esc(q.src)}" alt="" loading="lazy"></div>
+              <div class="meta"><b>${esc(q.title)}</b><span>눌러서 크게 보기</span></div>
+            </button>`).join('') : ''}${g.videos.map((v, vi) => `
           <button class="vcard" data-act="yt" data-g="${gi}" data-v="${vi}">
             <div class="thumb">${v.shorts ? '<span class="tag">Shorts</span>' : ''}<img src="https://i.ytimg.com/vi/${v.id}/mqdefault.jpg" alt="" loading="lazy"></div>
             <div class="meta"><b>${esc(v.title)}</b><span>${esc(v.by)}</span></div>
