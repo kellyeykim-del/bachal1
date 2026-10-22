@@ -2,6 +2,10 @@
 <html lang="ko">
 <head>
   <meta charset="utf-8">
+  <script>
+    // 예전 주소(github.io, is.gd)로 들어오면 새 주소(Vercel)로 이동 — #k=코드 도 그대로 전달
+    if (location.hostname.endsWith('github.io')) location.replace('https://dex-bachal1.vercel.app/' + location.hash);
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>덱스💜바챌 1기</title>
   <meta name="description" content="순코치와 함께한 6주, 이제 앱으로 매일 이어가요">
@@ -10,10 +14,10 @@
   <meta property="og:site_name" content="덱스💜바챌 1기">
   <meta property="og:title" content="덱스💜바챌 1기">
   <meta property="og:description" content="순코치와 함께한 6주, 이제 앱으로 매일 이어가요. 누르면 바로 열려요!">
-  <meta property="og:image" content="https://kellyeykim-del.github.io/bachal1/og.png">
+  <meta property="og:image" content="https://dex-bachal1.vercel.app/og.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:url" content="https://kellyeykim-del.github.io/bachal1/">
+  <meta property="og:url" content="https://dex-bachal1.vercel.app/">
   <meta name="theme-color" content="#6d4aff">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="icons/icon-192.png" type="image/png">
@@ -26,7 +30,7 @@
 </head>
 <body>
   <header class="topbar">
-    <a class="brand" id="brand-link" href="https://kellyeykim-del.github.io/bachal1/#k=0914" aria-label="덱스💜바챌 1기 링크 공유">
+    <a class="brand" id="brand-link" href="https://dex-bachal1.vercel.app/#k=0914" aria-label="덱스💜바챌 1기 링크 공유">
       <span class="brand-title">덱스💜바챌 1기</span>
       <span class="brand-sub" id="dday"></span>
     </a>
