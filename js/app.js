@@ -47,6 +47,7 @@
     wakeTarget: '08:00',
     sleepTarget: '23:30',
     fastTarget: 15,
+    intro: true,
     exercises: JSON.parse(JSON.stringify(DEFAULT_EX)),
   });
 
@@ -718,6 +719,15 @@
         </section>
 
         <section class="card">
+          <h2>시작 화면</h2>
+          <div class="row between">
+            <span>앱 시작 영상 <span class="small muted">(하루 한 번)</span></span>
+            <label class="switch"><input type="checkbox" data-intro ${s.intro !== false ? 'checked' : ''}><i></i></label>
+          </div>
+          <button class="btn ghost" data-act="replay-intro" style="padding-left:0;margin-top:6px">▶ 지금 다시 보기</button>
+        </section>
+
+        <section class="card">
           <h2>백업</h2>
           <p class="small muted" style="margin:0 0 10px">기록은 이 기기 브라우저 안에만 있어요. 휴대폰을 바꾸거나 브라우저 데이터를 지우기 전에 백업 파일을 내보내 두세요.</p>
           <div class="btn-row">
@@ -763,6 +773,14 @@
       link.remove();
       setTimeout(() => URL.revokeObjectURL(url), 1000);
       toast('백업 파일을 저장했어요');
+    } else if (a === 'replay-intro') {
+      closeSettings();
+      S.ui.introDay = null;
+      const was = S.settings.intro;
+      S.settings.intro = true;
+      showIntro();
+      S.settings.intro = was;
+      save();
     } else if (a === 'reset') {
       if (confirm('모든 인증 기록을 지울까요? 되돌릴 수 없어요.') && confirm('정말 지울까요? 먼저 백업을 내보내는 걸 추천해요.')) {
         S.days = {}; save(); closeSettings(); toast('기록을 모두 지웠어요');
@@ -781,6 +799,8 @@
         if (t.value) s[k] = t.value;
       } else s[k] = t.value.trim();
       save();
+    } else if (t.hasAttribute('data-intro')) {
+      s.intro = t.checked; save();
     } else if (t.dataset.exon != null) {
       s.exercises[Number(t.dataset.exon)].on = t.checked; save();
     } else if (t.dataset.ext != null) {
@@ -1042,8 +1062,49 @@
     return true;
   }
 
+  // ---------- 시작 영상 (하루 한 번) ----------
+  function showIntro() {
+    if (S.settings.intro === false || S.ui.introDay === todayKey()) return;
+    S.ui.introDay = todayKey();
+    save();
+    const el = document.createElement('div');
+    el.className = 'intro';
+    el.innerHTML = `
+      <video src="assets/intro.mp4" muted playsinline autoplay preload="auto"></video>
+      <button class="intro-skip" type="button">건너뛰기</button>
+      <div class="intro-title">
+        <span>순코치와 함께 하는</span>
+        <b>덱스 바디챌린지 1기</b>
+        <button class="btn primary intro-start" type="button">시작하기</button>
+      </div>`;
+    document.body.appendChild(el);
+    const video = el.querySelector('video');
+    let closeTimer;
+    const close = () => {
+      clearTimeout(closeTimer);
+      el.classList.add('out');
+      setTimeout(() => el.remove(), 450);
+    };
+    const showTitle = () => {
+      if (el.classList.contains('titled')) return;
+      el.classList.add('titled');
+    };
+    video.addEventListener('timeupdate', () => {
+      if (video.duration && video.currentTime >= video.duration - 2.5) showTitle();
+    });
+    video.addEventListener('ended', () => { showTitle(); closeTimer = setTimeout(close, 4000); });
+    // 자동 재생이 막히거나 영상이 없으면 제목만 보여주기
+    const fallback = () => { showTitle(); closeTimer = setTimeout(close, 3500); };
+    video.addEventListener('error', fallback);
+    const p = video.play();
+    if (p && p.catch) p.catch(fallback);
+    el.querySelector('.intro-skip').addEventListener('click', close);
+    el.querySelector('.intro-start').addEventListener('click', close);
+  }
+
   (async () => {
     if (entryOk() || (await autoEnter())) render();
     else showGate();
+    showIntro();
   })();
 })();
