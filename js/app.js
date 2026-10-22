@@ -1031,6 +1031,19 @@
     });
   }
 
-  if (entryOk()) render();
-  else showGate();
+  // 링크 끝에 #k=코드 가 붙어 오면 자동 입장 (단톡방 공유 링크용)
+  async function autoEnter() {
+    const m = location.hash.match(/k=([^&]+)/);
+    if (!m) return false;
+    history.replaceState(null, '', location.pathname + location.search);
+    if (!window.crypto || !crypto.subtle) return false;
+    if ((await sha256('bachal1:' + decodeURIComponent(m[1]))) !== C.entryHash) return false;
+    try { localStorage.setItem(ENTRY_KEY, C.entryHash); } catch (e) { /* 저장 불가: 이번만 입장 */ }
+    return true;
+  }
+
+  (async () => {
+    if (entryOk() || (await autoEnter())) render();
+    else showGate();
+  })();
 })();

@@ -3,7 +3,7 @@
   "short_name": "바챌 1기",
   "description": "덱스 바디챌린지 1기 — 매일 인증하고 순코치 자료를 다시 보는 앱",
   "lang": "ko",
-  "start_url": "./",
+  "start_url": "./#k=0914",
   "scope": "./",
   "display": "standalone",
   "orientation": "portrait",
