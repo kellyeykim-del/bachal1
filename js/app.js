@@ -858,7 +858,7 @@
   document.getElementById('btn-settings').addEventListener('click', openSettings);
 
   // 앱 이름을 누르면 공유 링크를 공유하거나 복사
-  const SHARE_URL = 'https://is.gd/bachal1';
+  const SHARE_URL = 'https://kellyeykim-del.github.io/bachal1/#k=0914';
   document.getElementById('brand-link').addEventListener('click', async (e) => {
     e.preventDefault();
     const text = '덱스💜바챌 1기 — 순코치와 함께한 6주, 앱으로 매일 이어가요';
