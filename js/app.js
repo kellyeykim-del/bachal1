@@ -1117,8 +1117,9 @@
     const el = document.createElement('div');
     el.className = 'intro';
     el.innerHTML = `
-      <video src="assets/intro.mp4" muted playsinline autoplay preload="auto"></video>
+      <video src="assets/intro.mp4" playsinline preload="auto"></video>
       <button class="intro-skip" type="button">건너뛰기</button>
+      <button class="intro-sound" type="button" hidden>🔊 소리 켜기</button>
       <div class="intro-title">
         <span>순코치와 함께 하는</span>
         <b>덱스 바디챌린지 1기</b>
@@ -1143,8 +1144,22 @@
     // 자동 재생이 막히거나 영상이 없으면 제목만 보여주기
     const fallback = () => { showTitle(); closeTimer = setTimeout(close, 3500); };
     video.addEventListener('error', fallback);
+    // 배경음: 먼저 소리와 함께 재생, 브라우저가 막으면 소리 없이 재생하고 '소리 켜기' 버튼 표시
+    const soundBtn = el.querySelector('.intro-sound');
+    const unmute = () => { video.muted = false; soundBtn.hidden = true; video.play().catch(() => {}); };
+    video.muted = false;
     const p = video.play();
-    if (p && p.catch) p.catch(fallback);
+    if (p && p.catch) {
+      p.catch(() => {
+        video.muted = true;
+        soundBtn.hidden = false;
+        // 소리 없는 재생도 가끔 중간에 끊기므로 몇 번 다시 시도
+        const tryPlay = (left) => video.play().catch(() => (left > 0 ? setTimeout(() => tryPlay(left - 1), 250) : fallback()));
+        tryPlay(4);
+      });
+    }
+    soundBtn.addEventListener('click', (e) => { e.stopPropagation(); unmute(); });
+    video.addEventListener('click', () => { if (video.muted) unmute(); });
     el.querySelector('.intro-skip').addEventListener('click', close);
     el.querySelector('.intro-start').addEventListener('click', close);
   }
