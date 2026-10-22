@@ -561,7 +561,7 @@
   const isVideo = (src) => /\.(mp4|mov|m4v|webm)$/i.test(src);
 
   function renderLibrary() {
-    const seg = [['notice', '주차 공지'], ['video', '운동 영상'], ['diet', '식단 원칙'], ['scenery', '풍경']];
+    const seg = [['notice', '코치 공지'], ['video', '운동 영상'], ['diet', '식단 원칙'], ['scenery', '풍경']];
     let body = '';
     if (ui.libTab === 'notice') {
       body = C.weeks.map((w) => {
