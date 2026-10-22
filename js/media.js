@@ -1,0 +1,30 @@
+// 자동 생성 파일 — tools/update-media.ps1 이 만듭니다. 직접 고치지 마세요.
+window.MEDIA = {
+  notices: {
+    "1": ["assets/notices/week1/01.jpg", "assets/notices/week1/02.jpg", "assets/notices/week1/03.jpg", "assets/notices/week1/04.jpg", "assets/notices/week1/05.jpg", "assets/notices/week1/06.jpg"],
+    "2": ["assets/notices/week2/01.jpg", "assets/notices/week2/02.jpg", "assets/notices/week2/03.jpg", "assets/notices/week2/04.jpg"],
+    "3": ["assets/notices/week3/01.jpg", "assets/notices/week3/02.jpg", "assets/notices/week3/03.jpg"],
+    "4": ["assets/notices/week4/01.jpg", "assets/notices/week4/02.jpg"],
+    "5": ["assets/notices/week5/01.jpg", "assets/notices/week5/02.jpg", "assets/notices/week5/03.jpg"],
+    "6": ["assets/notices/week6/01.jpg", "assets/notices/week6/02.jpg", "assets/notices/week6/03.jpg"]
+  },
+  scenery: ["assets/scenery/01.jpg", "assets/scenery/02.jpg", "assets/scenery/03.jpg", "assets/scenery/04.mp4", "assets/scenery/05.jpg", "assets/scenery/06.jpg", "assets/scenery/07.jpg", "assets/scenery/08.jpg", "assets/scenery/09.mp4", "assets/scenery/10.mp4", "assets/scenery/11.jpg", "assets/scenery/12.jpg", "assets/scenery/13.jpg", "assets/scenery/14.jpg", "assets/scenery/15.jpg", "assets/scenery/16.jpg", "assets/scenery/17.jpg", "assets/scenery/18.jpg", "assets/scenery/19.jpg", "assets/scenery/20.jpg", "assets/scenery/21.jpg", "assets/scenery/22.jpg", "assets/scenery/23.jpg", "assets/scenery/24.jpg", "assets/scenery/25.mp4", "assets/scenery/26.mp4", "assets/scenery/27.jpg", "assets/scenery/28.jpg", "assets/scenery/29.jpg", "assets/scenery/30.jpg", "assets/scenery/31.jpg", "assets/scenery/32.jpg", "assets/scenery/33.jpg", "assets/scenery/34.jpg", "assets/scenery/35.jpg", "assets/scenery/36.jpg", "assets/scenery/37.jpg", "assets/scenery/38.jpg", "assets/scenery/39.jpg", "assets/scenery/40.jpg", "assets/scenery/41.jpg", "assets/scenery/42.jpg", "assets/scenery/43.mp4", "assets/scenery/44.mp4", "assets/scenery/45.jpg", "assets/scenery/46.jpg", "assets/scenery/47.jpg", "assets/scenery/48.jpg", "assets/scenery/49.jpg", "assets/scenery/50.jpg", "assets/scenery/51.jpg"],
+  coach: [
+    { src: "assets/coach/01.mp4", title: "코치 운동 자세 ①" },
+    { src: "assets/coach/02.mp4", title: "코치 운동 자세 ②" },
+    { src: "assets/coach/03.mp4", title: "왼발·오른발 따로 10개씩" },
+    { src: "assets/coach/04.mp4", title: "철봉 없이 매달리기 도전 ①" },
+    { src: "assets/coach/05.mp4", title: "철봉 없이 매달리기 도전 ②" },
+    { src: "assets/coach/06.mp4", title: "팔벌려뛰기 - 견갑이 함께 올라가게" },
+    { src: "assets/coach/07.mp4", title: "매달리기 - 발만 살포시 띄우기" },
+    { src: "assets/coach/08.mp4", title: "견갑이 뽑히는 느낌" },
+    { src: "assets/coach/09.mp4", title: "1분 매달리기" },
+    { src: "assets/coach/10.mp4", title: "광배 - 팔꿈치는 몸통 선 따라" },
+    { src: "assets/coach/11.mp4", title: "매달리기" },
+    { src: "assets/coach/12.mp4", title: "영상 인증 예시 ①" },
+    { src: "assets/coach/13.mp4", title: "영상 인증 예시 ②" },
+    { src: "assets/coach/14.mp4", title: "매달리기 전 어깨 회전 10회" },
+    { src: "assets/coach/15.mp4", title: "견갑 으쓱으쓱" }
+  ],
+  recipe: ["assets/recipe/01.jpg", "assets/recipe/02.jpg"],
+};
