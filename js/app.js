@@ -2,7 +2,7 @@
   'use strict';
 
   const C = window.BACHAL;
-  const M = Object.assign({ notices: {}, scenery: [], coach: [], recipe: [] }, window.MEDIA || {});
+  const M = Object.assign({ notices: {}, scenery: [], coach: [], recipe: [], hike: [] }, window.MEDIA || {});
   const KEY = 'bachal1.v1';
   const DAY_MS = 86400000;
 
@@ -561,7 +561,7 @@
   const isVideo = (src) => /\.(mp4|mov|m4v|webm)$/i.test(src);
 
   function renderLibrary() {
-    const seg = [['notice', '코치 공지'], ['video', '운동 영상'], ['diet', '식단 원칙'], ['scenery', '풍경']];
+    const seg = [['notice', '코치 공지'], ['video', '운동 영상'], ['diet', '식단'], ['hike', '가을 산행'], ['scenery', '풍경']];
     let body = '';
     if (ui.libTab === 'notice') {
       body = C.weeks.map((w) => {
@@ -594,6 +594,17 @@
         ${recipe.length ? `<section class="card"><h2><span><span class="h-emoji">🍅</span>코치 추천 레시피</span></h2>
           <p class="small muted" style="margin:0">저녁 식사 틈이 안 날 때 강력 추천했던 토마토 주스</p>
           <div class="thumbs">${recipe.map((src, i) => `<button data-act="lb-recipe" data-i="${i}"><img src="${esc(src)}" alt="레시피 ${i + 1}" loading="lazy"></button>`).join('')}</div></section>` : ''}`;
+    } else if (ui.libTab === 'hike') {
+      const h = C.hike;
+      const photos = M.hike || [];
+      body = `<section class="card hike-card">
+          <div class="week-no">🍁 ${esc(h.when)}</div>
+          <h3>${esc(h.title)}</h3>
+          <p class="muted" style="margin:-4px 0 12px">${esc(h.sub)} · ${esc(h.where)}</p>
+          <div class="diet-list">${h.program.map(([t, p]) => `<div class="diet-item"><b>${esc(t)}</b><span>${esc(p)}</span></div>`).join('')}</div>
+        </section>
+        ${photos.length ? `<div class="hike-grid">${photos.map((p, i) => `
+          <button class="hike-photo" data-act="lb-hike" data-i="${i}"><img src="${esc(p.src)}" alt="${esc(p.title)}" loading="lazy"><span>${esc(p.title)}</span></button>`).join('')}</div>` : ''}`;
     } else {
       const items = M.scenery || [];
       body = items.length
@@ -936,6 +947,9 @@
         return;
       case 'lb-coach':
         openLightbox(coachVideos().map((v) => ({ type: 'video', src: v.src, caption: v.title })), Number(b.dataset.i));
+        return;
+      case 'lb-hike':
+        openLightbox(M.hike.map((p) => ({ type: 'image', src: p.src, caption: p.title })), Number(b.dataset.i));
         return;
       case 'lb-recipe':
         openLightbox(M.recipe.map((src) => ({ type: 'image', src })), Number(b.dataset.i));

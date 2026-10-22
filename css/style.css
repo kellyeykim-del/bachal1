@@ -269,8 +269,16 @@ label.field > span { display: block; font-size: 13px; color: var(--muted); font-
 .target-line-label { font-size: 12px; color: var(--muted); }
 
 /* ---------- library ---------- */
-.seg { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; padding: 4px; background: var(--surface); border-radius: 14px; box-shadow: var(--shadow); margin-bottom: 12px; }
-.seg button { border: 0; background: transparent; border-radius: 10px; padding: 9px 4px; font-weight: 700; font-size: 14px; color: var(--muted); }
+.seg { display: grid; grid-template-columns: repeat(5, 1fr); gap: 2px; padding: 4px; background: var(--surface); border-radius: 14px; box-shadow: var(--shadow); margin-bottom: 12px; }
+.seg button { border: 0; background: transparent; border-radius: 10px; padding: 9px 2px; font-weight: 700; font-size: 13px; color: var(--muted); word-break: keep-all; line-height: 1.25; }
+
+.hike-card h3 { margin: 2px 0 6px; font-size: 20px; }
+.hike-card .diet-item { grid-template-columns: 112px 1fr; font-size: 14px; }
+.hike-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.hike-grid .hike-photo:first-child { grid-column: 1 / -1; }
+.hike-photo { border: 0; padding: 0; background: var(--surface); border-radius: 14px; overflow: hidden; box-shadow: var(--shadow); text-align: left; }
+.hike-photo img { display: block; width: 100%; aspect-ratio: 3 / 4; object-fit: cover; }
+.hike-photo span { display: block; padding: 8px 10px 10px; font-size: 13px; font-weight: 700; }
 .seg button.on { background: var(--primary); color: var(--primary-ink); }
 
 .week-card .week-no { color: var(--primary); font-weight: 800; font-size: 13px; }

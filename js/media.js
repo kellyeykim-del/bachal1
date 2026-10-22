@@ -27,4 +27,10 @@ window.MEDIA = {
     { src: "assets/coach/15.mp4", title: "견갑 으쓱으쓱" }
   ],
   recipe: ["assets/recipe/01.jpg", "assets/recipe/02.jpg"],
+  hike: [
+    { src: "assets/hike/01.jpg", title: "바챌 가을 산행 포스터" },
+    { src: "assets/hike/02.jpg", title: "출발 전 단체 사진" },
+    { src: "assets/hike/03.jpg", title: "순코치 당근라페와 예디님 김밥" },
+    { src: "assets/hike/04.jpg", title: "함께한 선생님들" }
+  ],
 };
