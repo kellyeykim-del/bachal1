@@ -279,7 +279,7 @@ label.field > span { display: block; font-size: 13px; color: var(--muted); font-
 .hike-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
 .hike-photo { border: 0; padding: 0; background: var(--surface); border-radius: 14px; overflow: hidden; box-shadow: var(--shadow); text-align: left; }
 .hike-photo img { display: block; width: 100%; aspect-ratio: 3 / 4; object-fit: cover; }
-.hike-photo span { display: block; padding: 8px 10px 10px; font-size: 13px; font-weight: 700; word-break: keep-all; line-height: 1.4; }
+.hike-photo span { display: block; padding: 8px 10px 10px; font-size: 13px; font-weight: 700; word-break: keep-all; line-height: 1.4; white-space: pre-line; }
 .seg button.on { background: var(--primary); color: var(--primary-ink); }
 
 .week-card .week-no { color: var(--primary); font-weight: 800; font-size: 13px; }
@@ -361,6 +361,7 @@ label.field > span { display: block; font-size: 13px; color: var(--muted); font-
 }
 .lightbox .lb-prev { left: 8px; }
 .lightbox .lb-next { right: 8px; }
+.lightbox .lb-cap { white-space: pre-line; }
 .lightbox .lb-bottom { color: #fff; text-align: center; padding: 8px 12px calc(env(safe-area-inset-bottom) + 12px); font-size: 14px; }
 .lightbox .lb-bottom a { color: #c9bcff; }
 

@@ -662,7 +662,7 @@
         <button class="icon-btn" data-lb="close" aria-label="닫기" style="font-size:26px">✕</button></div>
       <div class="lb-stage">${stage}
         ${many ? '<button class="lb-nav lb-prev" data-lb="prev" aria-label="이전">‹</button><button class="lb-nav lb-next" data-lb="next" aria-label="다음">›</button>' : ''}</div>
-      <div class="lb-bottom">${it.caption ? esc(it.caption) : ''}
+      <div class="lb-bottom">${it.caption ? `<span class="lb-cap">${esc(it.caption)}</span>` : ''}
         ${it.type === 'youtube' ? `<div style="margin-top:6px"><a href="${it.shorts ? `https://youtube.com/shorts/${it.id}` : `https://youtu.be/${it.id}`}" target="_blank" rel="noopener">유튜브 앱에서 열기 ↗</a></div>` : ''}</div>`;
     document.body.appendChild(el);
     let x0 = null;
