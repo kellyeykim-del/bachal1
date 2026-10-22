@@ -2,7 +2,7 @@
   'use strict';
 
   const C = window.BACHAL;
-  const M = Object.assign({ notices: {}, scenery: [], coach: [], recipe: [], hike: [], camp: [], motivation: [] }, window.MEDIA || {});
+  const M = Object.assign({ notices: {}, scenery: [], coach: [], recipe: [], hike: [], camp: [], motivation: [], recap: [] }, window.MEDIA || {});
   const KEY = 'bachal1.v1';
   const DAY_MS = 86400000;
 
@@ -579,7 +579,12 @@
       }).join('');
     } else if (ui.libTab === 'video') {
       const coach = coachVideos();
-      body = (coach.length ? `<div class="vgroup"><h3>💜 순코치 시범 영상</h3><div class="vgrid">${coach.map((v, i) => `
+      const recap = M.recap || [];
+      body = recap.map((r, ri) => `
+        <button class="recap-card" data-act="lb-recap" data-i="${ri}">
+          <div class="recap-thumb"><video src="${esc(r.src)}#t=2" preload="metadata" muted playsinline></video></div>
+          <div class="meta"><b>💜 ${esc(r.title)}</b><span>정은영 선생님이 만든 영상 · 2분</span></div>
+        </button>`).join('') + (coach.length ? `<div class="vgroup"><h3>💜 순코치 시범 영상</h3><div class="vgrid">${coach.map((v, i) => `
         <button class="vcard" data-act="lb-coach" data-i="${i}"><div class="thumb"><video src="${esc(v.src)}#t=0.5" preload="metadata" muted playsinline></video></div>
         <div class="meta"><b>${esc(v.title)}</b><span>순코치</span></div></button>`).join('')}</div></div>` : '')
         + C.videoGroups.map((g, gi) => `<div class="vgroup"><h3>${esc(g.name)}</h3>
@@ -966,6 +971,9 @@
         return;
       case 'lb-coach':
         openLightbox(coachVideos().map((v) => ({ type: 'video', src: v.src, caption: v.title })), Number(b.dataset.i));
+        return;
+      case 'lb-recap':
+        openLightbox(M.recap.map((r) => ({ type: 'video', src: r.src, caption: r.title })), Number(b.dataset.i));
         return;
       case 'lb-quote':
         openLightbox(M.motivation.map((q) => ({ type: 'image', src: q.src, caption: q.title })), Number(b.dataset.i));

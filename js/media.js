@@ -36,16 +36,15 @@ window.MEDIA = {
     { src: "assets/hike/06.jpg", title: "가을 숲길" },
     { src: "assets/hike/07.jpg", title: "가을 숲길" },
     { src: "assets/hike/08.jpg", title: "데크길 산행" },
-    { src: "assets/hike/09.jpg", title: "데크길 산행" },
-    { src: "assets/hike/10.jpg", title: "어머~ 로맨틱하다~~ ^^" },
-    { src: "assets/hike/11.jpg", title: "산행 후 피크닉\n끝났다~ 드디어 먹는 겁니까~~~!!!" },
-    { src: "assets/hike/12.jpg", title: "순코치 당근라페와 예디님 김밥" },
-    { src: "assets/hike/13.jpg", title: "순코치의 철봉 코칭\n매의 눈으로!" },
-    { src: "assets/hike/14.jpg", title: "순코치의 철봉 코칭\n이렇게 하심 됩니다. 수려쌤!" },
-    { src: "assets/hike/15.jpg", title: "순코치의 철봉 코칭\n그렇지요!?? (갸우뚱?)" },
-    { src: "assets/hike/16.jpg", title: "순코치의 철봉 코칭\n역시 운동 천재 승현쌤" },
-    { src: "assets/hike/17.jpg", title: "무궁화공원 산책길을\n영화 속 한 장면으로 만드는 예디님" },
-    { src: "assets/hike/18.jpg", title: "밥이 끝이 아니었어~~\n폼롤러와 밴드와 함께 마무으리!!" }
+    { src: "assets/hike/09.jpg", title: "캬~~ 로맨틱하다~ (풍경이!!)" },
+    { src: "assets/hike/10.jpg", title: "산행 후 피크닉\n- 끝났다~ 드디어 먹는 겁니까~~~!!!" },
+    { src: "assets/hike/11.jpg", title: "순코치 당근라페와 예디님 김밥" },
+    { src: "assets/hike/12.jpg", title: "순코치의 철봉 코칭\n- 매의 눈으로!" },
+    { src: "assets/hike/13.jpg", title: "순코치의 철봉 코칭\n- 이렇게 하심 됩니다. 수려쌤!" },
+    { src: "assets/hike/14.jpg", title: "순코치의 철봉 코칭\n- 그렇지요!?? (갸우뚱?)" },
+    { src: "assets/hike/15.jpg", title: "순코치의 철봉 코칭\n- 역시 운동 천재 승현쌤" },
+    { src: "assets/hike/16.jpg", title: "무궁화공원 산책길을\n영화 속 한 장면으로 만드는 예디님" },
+    { src: "assets/hike/17.jpg", title: "밥이 끝이 아니었어~~\n폼롤러와 밴드와 함께 마무으리!!" }
   ],
   camp: [
     { src: "assets/camp/01.jpg", title: "부여 캠핑 장소" },
@@ -61,5 +60,8 @@ window.MEDIA = {
   ],
   motivation: [
     { src: "assets/motivation/01.jpg", title: "체력이 성격이 되고 성격이 운명이 된다" }
+  ],
+  recap: [
+    { src: "assets/recap/01.mp4", title: "바챌 1기 돌아보기" }
   ],
 };
