@@ -69,4 +69,7 @@ window.MEDIA = {
     { src: "assets/camp/09.jpg", title: "캠핑 장소의 일몰과 여명" },
     { src: "assets/camp/10.jpg", title: "캠핑 장소의 일몰과 여명" }
   ],
+  motivation: [
+    { src: "assets/motivation/01.jpg", title: "체력이 성격이 되고 성격이 운명이 된다" }
+  ],
 };

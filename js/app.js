@@ -2,7 +2,7 @@
   'use strict';
 
   const C = window.BACHAL;
-  const M = Object.assign({ notices: {}, scenery: [], coach: [], recipe: [], hike: [], camp: [] }, window.MEDIA || {});
+  const M = Object.assign({ notices: {}, scenery: [], coach: [], recipe: [], hike: [], camp: [], motivation: [] }, window.MEDIA || {});
   const KEY = 'bachal1.v1';
   const DAY_MS = 86400000;
 
@@ -582,7 +582,10 @@
       body = (coach.length ? `<div class="vgroup"><h3>💜 순코치 시범 영상</h3><div class="vgrid">${coach.map((v, i) => `
         <button class="vcard" data-act="lb-coach" data-i="${i}"><div class="thumb"><video src="${esc(v.src)}#t=0.5" preload="metadata" muted playsinline></video></div>
         <div class="meta"><b>${esc(v.title)}</b><span>순코치</span></div></button>`).join('')}</div></div>` : '')
-        + C.videoGroups.map((g, gi) => `<div class="vgroup"><h3>${esc(g.name)}</h3><div class="vgrid">${g.videos.map((v, vi) => `
+        + C.videoGroups.map((g, gi) => `<div class="vgroup"><h3>${esc(g.name)}</h3>
+          ${g.name === '동기부여' && (M.motivation || []).length ? `<div class="quote-list">${M.motivation.map((q, qi) => `
+            <button class="quote-card" data-act="lb-quote" data-i="${qi}"><img src="${esc(q.src)}" alt="${esc(q.title)}" loading="lazy"></button>`).join('')}</div>` : ''}
+          <div class="vgrid">${g.videos.map((v, vi) => `
           <button class="vcard" data-act="yt" data-g="${gi}" data-v="${vi}">
             <div class="thumb">${v.shorts ? '<span class="tag">Shorts</span>' : ''}<img src="https://i.ytimg.com/vi/${v.id}/mqdefault.jpg" alt="" loading="lazy"></div>
             <div class="meta"><b>${esc(v.title)}</b><span>${esc(v.by)}</span></div>
@@ -847,6 +850,18 @@
   });
   document.getElementById('btn-settings').addEventListener('click', openSettings);
 
+  // 앱 이름을 누르면 공유 링크를 공유하거나 복사
+  const SHARE_URL = 'https://is.gd/bachal1';
+  document.getElementById('brand-link').addEventListener('click', async (e) => {
+    e.preventDefault();
+    const text = '덱스💜바챌 1기 — 순코치와 함께한 6주, 앱으로 매일 이어가요';
+    if (navigator.share) {
+      try { await navigator.share({ title: '덱스💜바챌 1기', text, url: SHARE_URL }); } catch (err) { /* 공유 취소 */ }
+      return;
+    }
+    toast((await copyText(`${text}\n${SHARE_URL}`)) ? '앱 링크를 복사했어요 💜' : SHARE_URL);
+  });
+
   view.addEventListener('click', async (e) => {
     const b = e.target.closest('[data-act]');
     if (!b) return;
@@ -950,6 +965,9 @@
       case 'lb-coach':
         openLightbox(coachVideos().map((v) => ({ type: 'video', src: v.src, caption: v.title })), Number(b.dataset.i));
         return;
+      case 'lb-quote':
+        openLightbox(M.motivation.map((q) => ({ type: 'image', src: q.src, caption: q.title })), Number(b.dataset.i));
+        return;
       case 'lb-hike':
       case 'lb-camp': {
         const list = a === 'lb-hike' ? M.hike : M.camp;
@@ -1044,7 +1062,7 @@
     gate.className = 'gate';
     gate.innerHTML = `<form class="gate-box" autocomplete="off">
       <div class="gate-mark">💜</div>
-      <h1>바챌 1기</h1>
+      <h1>덱스💜바챌 1기</h1>
       <p>덱스 바디챌린지 1기 선생님들을 위한 앱이에요.<br>입장 코드를 입력해 주세요.</p>
       <input type="password" inputmode="numeric" id="gate-code" placeholder="입장 코드" aria-label="입장 코드" autofocus>
       <button class="btn primary block" type="submit">입장하기</button>

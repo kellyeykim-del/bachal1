@@ -1,6 +1,6 @@
 // 바챌 1기 서비스워커 — 앱 화면과 이미지를 저장해 오프라인에서도 열리게 합니다.
 // tools/update-media.ps1 을 실행하면 VERSION 이 자동으로 올라갑니다.
-const VERSION = 'bachal1-202610222001';
+const VERSION = 'bachal1-202610222004';
 const SHELL = [
   './',
   'index.html',

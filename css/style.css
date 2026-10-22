@@ -68,8 +68,8 @@ button { cursor: pointer; }
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
-.brand { display: flex; align-items: baseline; gap: 8px; }
-.brand-mark { font-size: 20px; }
+.brand { display: flex; align-items: baseline; gap: 8px; color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; }
+.brand:active { opacity: .6; }
 .brand-title { font-weight: 800; font-size: 20px; letter-spacing: -.02em; }
 .brand-sub { color: var(--muted); font-size: 13px; font-weight: 600; }
 .icon-btn {
@@ -305,6 +305,10 @@ label.field > span { display: block; font-size: 13px; color: var(--muted); font-
 .vcard .meta b { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; font-size: 13px; line-height: 1.35; }
 .vcard .meta span { font-size: 11px; color: var(--muted); }
 .vcard .tag { position: absolute; top: 6px; left: 6px; font-size: 10px; font-weight: 800; background: rgba(0,0,0,.6); color: #fff; padding: 2px 6px; border-radius: 6px; z-index: 1; }
+
+.quote-list { display: grid; gap: 10px; margin-bottom: 10px; }
+.quote-card { border: 0; padding: 0; border-radius: 14px; overflow: hidden; box-shadow: var(--shadow); background: var(--surface); }
+.quote-card img { display: block; width: 100%; height: auto; }
 
 .diet-list { display: grid; gap: 10px; }
 .diet-item { display: grid; grid-template-columns: 72px 1fr; gap: 10px; align-items: start; }
